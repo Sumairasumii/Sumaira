@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumaira Portfolio</title>
+<link rel="icon" type="image/png" href="assets/img/pic.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--pink:#ff014f;--bg:#0d0d0d;--bg2:#111;--card:#1a1a1a;--border:#2a2a2a;--muted:#999;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:#fff;display:flex;}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--pink);border-radius:4px}
+
+/* CUSTOM CURSOR */
+body{cursor:none!important;}
+a,button,[onclick]{cursor:none!important;}
+.cursor-main{width:12px;height:12px;background:var(--pink);border-radius:50%;position:fixed;pointer-events:none;z-index:999999;transform:translate(-50%,-50%);box-shadow:0 0 8px var(--pink),0 0 16px rgba(255,1,79,.4);}
+.cursor-main.hover{width:10px;height:10px;background:#fff;box-shadow:0 0 10px #fff,0 0 20px var(--pink);}
+.sparkle{position:fixed;pointer-events:none;z-index:999990;border-radius:50%;transform:translate(-50%,-50%);animation:sparkleFade .6s ease forwards;}
+@keyframes sparkleFade{0%{opacity:1;transform:translate(-50%,-50%) scale(1);}100%{opacity:0;transform:translate(-50%,-50%) scale(0);}}
+
+/* SCROLL TO TOP */
+.scroll-top{position:fixed;bottom:26px;right:26px;width:40px;height:40px;background:var(--pink);border:none;color:#fff;border-radius:50%;font-size:.95rem;z-index:9000;display:none;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(255,1,79,.4);transition:transform .2s;cursor:none!important;}
+.scroll-top.show{display:flex;}
+.scroll-top:hover{transform:translateY(-3px);}
+
+/* CERT POPUP EMBED */
+.vid-thumb{width:100%;height:280px;background:linear-gradient(135deg,#1a1a1a,#111);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.vid-thumb i{font-size:2.8rem;color:var(--pink);}
+.vid-thumb span:first-of-type{color:#fff;font-size:.85rem;font-weight:600;}
+
+/* BROWSER MOCKUP */
+.browser-mock{width:100%;height:280px;background:#1e1e1e;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.browser-bar{background:#2a2a2a;padding:8px 12px;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.browser-dots{display:flex;gap:5px;}
+.browser-dots span{width:10px;height:10px;border-radius:50%;}
+.browser-dots span:nth-child(1){background:#ff5f57;}
+.browser-dots span:nth-child(2){background:#febc2e;}
+.browser-dots span:nth-child(3){background:#28c840;}
+.browser-url{background:#1a1a1a;border-radius:4px;padding:3px 10px;font-size:.65rem;color:#888;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.browser-mock img{width:100%;flex:1;object-fit:cover;object-position:top;transition:transform 3s ease;}
+.pf-thumb:hover .browser-mock img{transform:translateY(-30%);}
+.vid-thumb-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#1a1a1a,#0d0d0d);}
+.vid-thumb-inner i{font-size:2.8rem;color:var(--pink);filter:drop-shadow(0 0 12px rgba(255,1,79,.4));}
+.vid-thumb-inner span:first-of-type{color:#fff;font-size:.85rem;font-weight:600;}
+/* SECTION FADE */
+section.fade-in{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+section.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* SIDEBAR */
+.sidebar{width:200px;min-height:100vh;position:fixed;top:0;left:0;background:#000;border-right:1px solid var(--border);padding:24px 12px;display:flex;flex-direction:column;justify-content:space-between;z-index:100;overflow-y:auto;}
+.s-avatar{width:74px;height:74px;border-radius:50%;border:2px solid var(--pink);object-fit:cover;display:block;margin:0 auto 8px;}
+.s-name{text-align:center;font-size:.95rem;font-weight:700;}
+.s-role{display:block;text-align:center;font-size:.65rem;color:var(--pink);letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;min-height:16px;}
+.sidebar .nav-link{display:flex;align-items:center;gap:8px;color:var(--muted)!important;font-size:.8rem;padding:7px 11px;border-radius:7px;transition:background .2s,color .2s;font-weight:500;text-decoration:none;}
+.sidebar .nav-link i{width:14px;color:var(--pink)!important;font-size:.75rem;}
+.sidebar .nav-link:hover,.sidebar .nav-link.active{background:var(--pink)!important;color:#fff!important;}
+.sidebar .nav-link:hover i,.sidebar .nav-link.active i{color:#fff!important;}
+.socials{display:flex;justify-content:center;gap:7px;margin-top:12px;}
+.socials a{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.7rem;text-decoration:none;transition:background .2s,color .2s;}
+.socials a:hover{background:var(--pink);border-color:var(--pink);color:#fff;}
+
+/* MAIN */
+.main{margin-left:200px;width:calc(100% - 200px);}
+
+/* SECTIONS */
+section{padding:70px 0;}
+#home{min-height:100vh;display:flex;align-items:center;background:#0a0a0f;position:relative;overflow:hidden;}
+#hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
+#services,#skills-grid,#certifications,#contact{background:var(--bg2);}
+#portfolio,#resume{background:var(--bg);}
+
+.sec-label{display:block;font-size:.65rem;color:var(--pink);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+.sec-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:8px;}
+.sec-sub{color:var(--muted);font-size:.84rem;max-width:480px;margin:0 auto 40px;}
+.text-center .sec-sub{text-align:center;}
+
+/* HERO */
+.hero-badge{display:inline-block;background:rgba(255,1,79,.1);border:1px solid var(--pink);color:var(--pink);font-size:.68rem;padding:3px 12px;border-radius:20px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.pink{color:var(--pink);}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;line-height:1.1;margin-bottom:8px;}
+.hero h3{font-size:1.1rem;color:var(--muted);font-weight:400;margin-bottom:12px;}
+.hero h3 span{color:var(--pink);font-weight:700;}
+.hero p{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:24px;max-width:460px;}
+.btn-p{background:var(--pink);color:#fff;padding:10px 22px;border-radius:7px;font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:7px;border:none;}
+.btn-p:hover{background:#e0003f;color:#fff;}
+.btn-o{background:transparent;color:#fff;padding:10px 22px;border-radius:7px;font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);}
+.btn-o:hover{border-color:var(--pink);color:var(--pink);}
+
+/* CARDS */
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 18px;height:100%;transition:border-color .2s,transform .2s;}
+.svc-card:hover{border-color:var(--pink);transform:translateY(-3px);}
+.svc-icon{width:44px;height:44px;border-radius:10px;background:rgba(255,1,79,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--pink);margin-bottom:12px;}
+.svc-card h5{font-size:.88rem;font-weight:700;margin-bottom:6px;}
+.svc-card p{font-size:.78rem;color:var(--muted);line-height:1.6;margin:0;}
+
+/* PORTFOLIO */
+.pf-filters{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-bottom:28px;}
+.pf-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:6px 16px;border-radius:25px;font-size:.78rem;font-weight:600;cursor:pointer;transition:background .2s,color .2s;}
+.pf-btn.active,.pf-btn:hover{background:var(--pink);border-color:var(--pink);color:#fff;}
+.pf-card{background:var(--card);border:1px solid var(--border);border-left:3px solid transparent;border-radius:12px;padding:16px 14px;display:flex;align-items:center;gap:12px;height:100%;transition:border-color .2s,transform .2s;cursor:pointer;}
+.pf-card:hover{border-left-color:var(--pink);transform:translateY(-2px);}
+.pf-ic{width:40px;height:40px;border-radius:9px;background:rgba(255,1,79,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--pink);flex-shrink:0;}
+.pf-card h5{font-size:.83rem;font-weight:700;margin-bottom:4px;}
+/* THUMBNAIL */
+.pf-thumb{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--card);}
+.pf-thumb img{width:100%;height:280px;object-fit:contain;object-position:center;display:block;transition:transform .35s;background:#1a1a1a;}
+.pf-thumb:hover img{transform:scale(1.06);}
+.pf-overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:12px;}
+.pf-thumb:hover .pf-overlay{opacity:1;}
+.pf-overlay h5{color:#fff;font-size:.85rem;font-weight:700;text-align:center;margin:0;}
+.pf-overlay .eye-ic{width:38px;height:38px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;}
+
+/* SKILLS */
+.sk-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 8px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;transition:border-color .2s;}
+.sk-card:hover{border-color:var(--pink);}
+.sk-card img{width:42px;height:42px;object-fit:contain;}
+.sk-card i{font-size:2rem;line-height:1;}
+.sk-card span{font-size:.68rem;color:var(--muted);font-weight:600;}
+
+/* RESUME */
+.tl{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--pink);border-radius:10px;padding:15px 17px;margin-bottom:11px;}
+.tl-yr{display:inline-block;font-size:.65rem;background:rgba(255,1,79,.1);color:var(--pink);padding:1px 8px;border-radius:15px;margin-bottom:5px;}
+.tl h5{font-size:.88rem;font-weight:700;margin-bottom:3px;}
+.tl p{font-size:.78rem;color:var(--muted);margin:0;}
+
+/* CERT */
+.plt-title{display:flex;align-items:center;gap:10px;margin-bottom:12px;margin-top:30px;}
+.plt-title:first-of-type{margin-top:0;}
+.plt-ic{width:36px;height:36px;border-radius:8px;background:rgba(255,1,79,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--pink);flex-shrink:0;}
+.plt-title h5{font-size:.82rem;font-weight:700;color:var(--pink);margin:0;text-transform:uppercase;letter-spacing:.5px;}
+.ct-card{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px 13px;margin-bottom:7px;display:flex;align-items:center;gap:10px;transition:border-color .2s;}
+.ct-card:hover{border-color:var(--pink);}
+.ct-ic{width:30px;height:30px;border-radius:6px;background:rgba(255,1,79,.1);display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:.78rem;flex-shrink:0;}
+.ct-info{flex:1;}
+.ct-info h6{font-size:.79rem;font-weight:600;margin:0 0 3px;color:#fff;}
+.eye-btn{width:26px;height:26px;border-radius:6px;background:rgba(255,1,79,.1);display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:.68rem;text-decoration:none;flex-shrink:0;margin-left:auto;transition:background .2s,color .2s;}
+.eye-btn:hover{background:var(--pink);color:#fff;}
+
+/* BADGES */
+.bdg{display:inline-block;font-size:.58rem;padding:1px 7px;border-radius:15px;font-weight:600;}
+.bw{background:rgba(0,150,255,.12);color:#4db8ff;}
+.bg{background:rgba(255,1,79,.1);color:#ff6b9d;}
+.ba{background:rgba(124,0,255,.1);color:#b366ff;}
+.bc{background:rgba(0,200,150,.1);color:#00c896;}
+.bm{background:rgba(255,180,0,.1);color:#ffb400;}
+.bn{background:rgba(0,180,255,.1);color:#00b4ff;}
+.bb{background:rgba(100,200,100,.1);color:#64c864;}
+.bx{background:rgba(150,150,150,.1);color:#aaa;}
+
+/* CONTACT */
+.form-control{background:var(--card)!important;border:1px solid var(--border)!important;color:#fff!important;border-radius:8px!important;padding:10px 14px!important;font-size:.85rem;}
+.form-control:focus{border-color:var(--pink)!important;box-shadow:none!important;}
+.form-control::placeholder{color:#555!important;}
+.ci{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.ci .ic{width:38px;height:38px;border-radius:9px;background:rgba(255,1,79,.1);display:flex;align-items:center;justify-content:center;color:var(--pink);font-size:.88rem;flex-shrink:0;}
+.ci h6{font-size:.7rem;color:var(--muted);margin-bottom:1px;}
+.ci p{font-size:.82rem;margin:0;font-weight:600;}
+
+footer{background:#000;padding:18px;text-align:center;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);}
+footer span{color:var(--pink);}
+
+/* POPUP LIGHTBOX */
+#popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:99999;align-items:center;justify-content:center;padding:20px;}
+#popup.open{display:flex;}
+.popup-close{position:fixed;top:18px;right:22px;background:var(--pink);border:none;color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:100000;box-shadow:0 4px 15px rgba(255,1,79,.5);transition:transform .2s;display:flex;align-items:center;justify-content:center;}
+.popup-close:hover{transform:scale(1.12);}
+.popup-box{position:relative;max-width:90vw;max-height:90vh;text-align:center;}
+.popup-title{color:#fff;font-size:.9rem;font-weight:700;margin-bottom:12px;}
+.popup-box img{max-width:88vw;max-height:82vh;border-radius:12px;object-fit:contain;display:block;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.8);}
+.popup-box video{max-width:88vw;max-height:82vh;border-radius:12px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.8);}
+
+
+/* extra */
+/* =========================
+   WEB MOCK (LANDING PREVIEW)
+========================= */
+.browser-mock {
+  height: 350px;
+  background:#1a1a1a;
+  display:flex;
+  flex-direction:column;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.browser-mock img {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+.pf-thumb:hover .browser-mock img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   POPUP
+========================= */
+#popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:99999;
+  overflow-y:auto;
+  padding:40px 20px;
+}
+
+#popup.open{
+  display:block; /* IMPORTANT */
+}
+
+.popup-box{
+  max-width:900px;
+  margin:auto;
+}
+
+.popup-box img{
+  width:100%;
+  height:auto;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+.popup-box img.zoomed{
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+/* =========================
+   MENU BUTTON
+========================= */
+#menuToggle{
+  display:none;
+  position:fixed;
+  top:15px;
+  left:15px;
+  z-index:100000;
+  background:#ff014f;
+  border:none;
+  color:#fff;
+  padding:8px 12px;
+  border-radius:6px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:768px){
+
+  #menuToggle{
+    display:block;
+  }
+
+  .sidebar{
+    left:-220px;
+    transition:0.3s;
+  }
+
+  .sidebar.active{
+    left:0;
+  }
+
+  .main{
+    margin-left:0;
+    width:100%;
+  }
+
+  .browser-mock{
+    height:250px;
+  }
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #ff014f;
+  filter: blur(120px);
+  opacity: 0.3;
+  top: -50px;
+  left: -50px;
+  animation: floatUpDown 6s infinite;
+}
+
+/* media */
+@media(max-width:768px){
+  #menuToggle{
+    display: block; /* only mobile */
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* SIDEBAR HIDE */
+  .sidebar {
+    position: fixed;
+    left: -220px;
+    transition: 0.3s;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* MAIN FULL WIDTH */
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* THUMB HEIGHT */
+  .browser-mock {
+    height: 250px;
+  }
+
+  .pf-thumb img {
+    height: 220px;
+  }
+}
+</style>
+</head>
+<body>
+  <!-- extra -->
+<div id="popup" onclick="if(event.target===this) closePopup()">
+  <button class="popup-close" onclick="closePopup()">×</button>
+
+  <div class="popup-box">
+    <img id="popup-img" src="">
+  </div>
+</div>
+ <!-- extra end-->
+
+<!-- CURSOR -->
+<div class="cursor-main" id="cursorMain"></div>
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<button id="menuToggle"><i class="fas fa-bars"></i></button>
+<div class="sidebar">
+  <div>
+    <img src="assets/img/pic.png" class="s-avatar" alt="Sumaira" onerror="this.src='https://ui-avatars.com/api/?name=Sumaira&background=ff014f&color=fff&size=74'">
+    <div class="s-name">Sumaira</div>
+    <span class="s-role">Designer & Developer</span>
+    <!-- toggle theme -->
+     
+    <ul class="nav flex-column">
+      <li><a class="nav-link active" href="#home"><i class="fas fa-house"></i>Home</a></li>
+      <li><a class="nav-link" href="#services"><i class="fas fa-briefcase"></i>Services</a></li>
+      <li><a class="nav-link" href="#portfolio"><i class="fas fa-images"></i>Portfolio</a></li>
+      <li><a class="nav-link" href="#skills-grid"><i class="fas fa-star"></i>Skills</a></li>
+      <li><a class="nav-link" href="#resume"><i class="fas fa-file-alt"></i>Resume</a></li>
+      <li><a class="nav-link" href="#certifications"><i class="fas fa-award"></i>Certificates</a></li>
+      <li><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="socials">
+      <a href="https://www.facebook.com/share/AF9imWKqbQFqw8Lm/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/sumaira-hussain-762867214" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="container" style="position:relative;z-index:2;">
+      <h1>I'm <span class="pink">Sumaira</span></h1>
+      <h3>A <span class="typed"></span></h3>
+      <p>I design and develop beautiful websites and create intuitive UI/UX experiences that people love.</p>
+      <div class="d-flex gap-3 flex-wrap">
+        <a href="#portfolio" class="btn-p"><i class="fas fa-eye"></i>View Portfolio</a>
+        <a href="#contact" class="btn-o"><i class="fas fa-paper-plane"></i>Hire Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+  <div class="container">
+
+    <div class="text-center">
+      <span class="sec-label">What I Do</span>
+      <h2 class="sec-title">My Services</h2>
+      <p class="sec-sub">Crafting intuitive designs and delivering high-quality development solutions.</p>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- Web Development -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-laptop-code"></i></div>
+          <h5>Web Design & Development</h5>
+          <p>Creating modern, responsive websites using HTML, CSS, JavaScript, Bootstrap and PHP.</p>
+        </div>
+      </div>
+
+      <!-- UI/UX -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-pen-ruler"></i></div>
+          <h5>UI/UX Design</h5>
+          <p>Designing intuitive user interfaces with seamless user experiences for web and mobile applications.</p>
+        </div>
+      </div>
+
+      <!-- Graphic Design -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-palette"></i></div>
+          <h5>Graphic Design</h5>
+          <p>Creating flyers, posters, banners, logos and social media graphics using Adobe tools and Canva.</p>
+        </div>
+      </div>
+
+      <!-- Video Editing (Animation removed) -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-video"></i></div>
+          <h5>Video Editing</h5>
+          <p>Professional video editing using Adobe Premiere Pro for high-quality content creation.</p>
+        </div>
+      </div>
+
+      <!-- Digital Marketing -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-bullhorn"></i></div>
+          <h5>Digital Marketing & SEO</h5>
+          <p>Growing online presence through SEO, social media marketing and content strategy.</p>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-share-nodes"></i></div>
+          <h5>Social Media Marketing</h5>
+          <p>Managing accounts, creating content and running targeted ad campaigns.</p>
+        </div>
+      </div>
+
+      <!-- Landing Pages -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-rocket"></i></div>
+          <h5>Landing Page Design</h5>
+          <p>High-converting landing pages focused on sales, leads and modern UI performance.</p>
+        </div>
+      </div>
+
+      <!-- CMS Website (WordPress renamed) -->
+      <div class="col-md-4 col-sm-6">
+        <div class="svc-card">
+          <div class="svc-icon"><i class="fas fa-globe"></i></div>
+          <h5>CMS Website Development</h5>
+          <p>Building professional websites using WordPress and other CMS platforms with full customization.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+  <div class="svc-card">
+    <div class="svc-icon"><i class="fas fa-headset"></i></div>
+    <h5>Website Support & Updates</h5>
+    <p>Providing ongoing support, small changes and updates to keep websites running smoothly.</p>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="text-center">
+        <span class="sec-label">My Work</span>
+        <h2 class="sec-title">Portfolio</h2>
+        <p class="sec-sub">Click on any project to view the full image.</p>
+      </div>
+      <div class="pf-filters">
+        <button class="pf-btn active" onclick="pf('web',this)">Web Designing</button>
+        <button class="pf-btn " onclick="pf('graphic',this)">Graphic Designing</button>
+      </div>
+      <div class="row g-3" id="pgrid">
+
+        <!-- GRAPHIC - ALL MOCKUP IMAGES -->
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg','A5 Flyer Mockup')"><img src="assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg" alt="A5 Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A5 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Strawberry.jpg','Manipulation — Photo Manipulation')"><img src="assets/GraphicWork/Strawberry.jpg" alt="Photo Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer.jpg','A6 Flyer Mockup')"><img src="assets/GraphicWork/A6_Flyer.jpg" alt="A6 Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg','A6 Flyer Shadow Overlay')"><img src="assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg" alt="A6 Shadow"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer — Shadow Overlay</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Asp_net.jpg','ASP.NET Flyer Mockup')"><img src="assets/GraphicWork/Asp_net.jpg" alt="ASP.NET"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>ASP.NET Flyer Mockup</h5><span class="bdg bw">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Brand-identity.jpg','Brand Identity — SOS TTI')"><img src="assets/GraphicWork/Brand-identity.jpg" alt="Brand Identity"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Brand Identity — SOS TTI</h5><span class="bdg bg">Branding</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Calender.jpg','Calendar 2025 Mockup')"><img src="assets/GraphicWork/Calender.jpg" alt="Calendar"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Calendar 2025 Mockup</h5><span class="bdg bg">Graphic Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/DigitalFlyer.jpg','Digital Marketing Flyer')"><img src="assets/GraphicWork/DigitalFlyer.jpg" alt="Digital Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Digital Marketing Flyer</h5><span class="bdg bm">Marketing</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/English.jpg','English Language Flyer')"><img src="assets/GraphicWork/English.jpg" alt="English"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>English Language Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/fLYER_MOCKUP.jpg','Flyer Mockup')"><img src="assets/GraphicWork/fLYER_MOCKUP.jpg" alt="Flyer Mockup"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_1.jpg','Flyer Mockup 1')"><img src="assets/GraphicWork/Flyer_Mockup_1.jpg" alt="Flyer 1"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 1</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/SocialmediaPost.jpg','Social Media Mockup ')"><img src="assets/GraphicWork/SocialmediaPost.jpg" alt="Social Media Post"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Scoial Media Post</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_2.jpg','Flyer Mockup 2')"><img src="assets/GraphicWork/Flyer_Mockup_2.jpg" alt="Flyer 2"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 2</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Flyer_Mockup_1.jpg','Free Flyer Mockup')"><img src="assets/GraphicWork/Free_Flyer_Mockup_1.jpg" alt="Free Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Free Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/bulb.jpg','bulb Mockup')"><img src="assets/GraphicWork/bulb.jpg" alt="Photo Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg','Square Sign Board Mockup')"><img src="assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg" alt="Sign Board"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Sign Board Mockup</h5><span class="bdg bg">Outdoor Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/GlobalLOgo.jpg','Global Solutions Logo')"><img src="assets/GraphicWork/GlobalLOgo.jpg" alt="Global Logo"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Global Solutions Logo</h5><span class="bdg bg">Logo Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/KashmirDay.jpg','Kashmir Solidarity Day Post')"><img src="assets/GraphicWork/KashmirDay.jpg" alt="Kashmir Day"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Kashmir Solidarity Day</h5><span class="bdg bm">Social Media</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/manipulation.jpg','Photo Manipulation')"><img src="assets/GraphicWork/manipulation.jpg" alt="Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Graphic Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg','Minimalistic A6 Flyer')"><img src="assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg" alt="Minimalistic"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Minimalistic A6 Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Motorcycle.jpg','Motorcycle Course Flyer')"><img src="assets/GraphicWork/Motorcycle.jpg" alt="Motorcycle"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Motorcycle Course Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg','World Cup Outdoor Sign')"><img src="assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg" alt="Outdoor Sign"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>World Cup Outdoor Sign</h5><span class="bdg bm">Outdoor Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Roller_Banner_Mockup_1.jpg','Roller Banner — Roller_Banner_Mockup_1')"><img src="assets/GraphicWork/Roller_Banner_Mockup_1.jpg" alt="Roller Banner"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Roller Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Banner_Mockup.jpg','Banner_Mockup — Banner_Mockup')"><img src="assets/GraphicWork/Banner_Mockup.jpg" alt="Roller Banner"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+
+        <!-- WEB - WEBSITE MOCKUPS -->
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/Furtinture Website.png','Furniture Website — Hommie')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">hommie-furniture.com</div>
+              </div>
+              <img src="assets/Web Work/Furtinture Website.png" alt="Furniture Website">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Furniture Website — Hommie</h5><span class="bdg bw">Web Design</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/Landing Page.png','KingsterKids — School Website')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">kingsterkids.edu</div>
+              </div>
+              <img src="assets/Web Work/Landing Page.png" alt="KingsterKids">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>KingsterKids — School Website</h5><span class="bdg bw">Web Design</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/Lnading Page.png','Gourmet Catering Website')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">gourmetcatering.com</div>
+              </div>
+              <img src="assets/Web Work/Lnading Page.png" alt="Gourmet Catering">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Gourmet Catering Website</h5><span class="bdg bw">Web Design</span></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 pw" data-c="web">
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/mindset.png','Mindset Technology — Client Website')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">mindsettechnology.net</div>
+              </div>
+              <img src="assets/Web Work/mindset.png" alt="Mindset Technology">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Mindset Technology — Client Site</h5><span class="bdg bw">WordPress</span></div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/Form_validation.JPG','Form Validation')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">Form Validation</div>
+              </div>
+              <img src="assets/Web Work/Form_validation.JPG" alt="Form Validation">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Form Validation</h5><span class="bdg bw">Form Validation</span></div>
+          </div>
+        </div>
+        <!-- WEB - VIDEO PROJECTS with actual video thumbnails -->
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Point of sale.mp4','Point of Sale System')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Point of Sale System</div></div>
+              <video src="assets/Web Work/Point of sale.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Point of Sale System</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Wesbite.mp4','Website Demo')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Website Demo</div></div>
+              <video src="assets/Web Work/Wesbite.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Website Demo</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/QuizApp.mp4','Quiz Application')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Quiz Application</div></div>
+              <video src="assets/Web Work/QuizApp.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Quiz Application</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/WeatherApp.mp4','Weather App')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Weather App</div></div>
+              <video src="assets/Web Work/WeatherApp.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Weather App</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Todo.mp4','Todo App')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Todo App</div></div>
+              <video src="assets/Web Work/Todo.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Todo App</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Calculator.mp4','Calculator App')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Calculator App</div></div>
+              <video src="assets/Web Work/Calculator.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Calculator App</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/StopWatch.mp4','Stopwatch App')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Stopwatch App</div></div>
+              <video src="assets/Web Work/StopWatch.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Stopwatch App</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/AgeCalculator.mp4','Age Calculator')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Age Calculator</div></div>
+              <video src="assets/Web Work/AgeCalculator.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Age Calculator</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Authentiication.mp4','Authentication System')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Authentication System</div></div>
+              <video src="assets/Web Work/Authentiication.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Authentication System</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Crud.mp4','CRUD Application')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">CRUD Application</div></div>
+              <video src="assets/Web Work/Crud.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>CRUD Application</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/filter.mp4','Filter Application')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Filter Application</div></div>
+              <video src="assets/Web Work/filter.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Filter Application</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+
+         <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/TicTacToe.mp4','TicTacToe Game')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">TicTacToe </div></div>
+              <video src="assets/Web Work/TicTacToe.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Start Game</h5><span class="bdg bw">Start Game</span></div>
+          </div>
+        </div>
+
+         <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Password.mp4','Password Generator')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Password </div></div>
+              <video src="assets/Web Work/Password.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Start Game</h5><span class="bdg bw">Generate Password</span></div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- POPUP -->
+  <div id="popup" onclick="if(event.target===this)closePopup()">
+    <button class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></button>
+    <div class="popup-box">
+      <p class="popup-title" id="popup-title"></p>
+      <img id="popup-img" src="" alt="" style="display:none;">
+      <video id="popup-vid" src="" controls style="display:none;"></video>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills-grid">
+    <div class="container">
+      <div class="text-center">
+        <span class="sec-label">Technologies</span>
+        <h2 class="sec-title">My Skills</h2>
+        <p class="sec-sub">Proficient in UI/UX design, front-end development and various creative tools.</p>
+      </div>
+      <div class="row g-3 justify-content-center">
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><span>HTML 5</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><span>CSS 3</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"><span>JavaScript</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"><span>Bootstrap</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress"><span>WordPress</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="jQuery"><span>jQuery</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"><span>PHP</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn-icons-png.flaticon.com/512/51/51319.png" alt="Database"><span>Database</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><span>Figma</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Adobe_Photoshop_CC_icon.svg/500px-Adobe_Photoshop_CC_icon.svg.png" alt="Ps"><span>Photoshop</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://cdn.iconscout.com/icon/free/png-256/free-adobe-illustrator-logo-icon-svg-download-png-7581617.png" alt="Ai"><span>Illustrator</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Adobe_InDesign_CC_icon.svg/500px-Adobe_InDesign_CC_icon.svg.png" alt="InDesign"><span>InDesign</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Adobe_Premiere_Pro_CC_icon.svg/500px-Adobe_Premiere_Pro_CC_icon.svg.png" alt="Premiere Pro"><span>Premiere Pro</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Adobe_After_Effects_CC_icon.svg/960px-Adobe_After_Effects_CC_icon.svg.png" alt="After Effects"><span>After Effects</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><img src="https://brandlogovector.com/wp-content/uploads/2022/02/Canva-App-Logo-Small.png" alt="Canva"><span>Canva</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-robot" style="color:#b366ff;"></i><span>AI Tools</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-magnifying-glass-chart" style="color:#ffb400;"></i><span>SEO</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-bullhorn" style="color:#ff6b35;"></i><span>Digital Marketing</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-file-word" style="color:#2b579a;"></i><span>MS Word</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-file-excel" style="color:#217346;"></i><span>MS Excel</span></div></div>
+        <div class="col-4 col-sm-3 col-md-2"><div class="sk-card"><i class="fas fa-file-powerpoint" style="color:#d04423;"></i><span>PowerPoint</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="resume">
+    <div class="container">
+      <div class="text-center">
+        <span class="sec-label">My Background</span>
+        <h2 class="sec-title">Experience & Internship</h2>
+        <p class="sec-sub"></p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-8">
+          <h5 class="mb-3"><i class="fas fa-briefcase pink me-2"></i>Work Experience</h5>
+          <div class="tl">
+            <span class="tl-yr">Present</span>
+            <h5>Instructor — SOS Technical Training Institute</h5>
+            <p>Teaching Web Designing, Graphic Design, Computer Graphics and more at SOS TTI Infaq Foundation Campus, Karachi.</p>
+          </div>
+          <div class="tl">
+            <span class="tl-yr">Freelance</span>
+            <h5>Web Designer — Mindsettechnology.net</h5>
+            <p>Designed and developed client website using WordPress. Delivered responsive, modern design tailored to client requirements.</p>
+            <a href="https://mindsettechnology.net/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:.78rem;color:var(--pink);text-decoration:none;font-weight:600;"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+          </div>
+          <h5 class="mb-3 mt-4"><i class="fas fa-building pink me-2"></i>Internship</h5>
+          <div class="tl">
+            <span class="tl-yr">Internship</span>
+            <h5>SL Internship Program — Systems Limited</h5>
+            <p>Successfully completed internship program at Systems Limited — a leading software house in Pakistan.</p>
+            <a onclick="openLB('assets/Certifications/internship_certificate.jpg','SL Internship — Systems Limited')" style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:.78rem;color:var(--pink);text-decoration:none;font-weight:600;cursor:pointer;"><i class="fas fa-eye"></i> View Certificate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="text-center">
+        <span class="sec-label">My Achievements</span>
+        <h2 class="sec-title">Certifications</h2>
+        <p class="sec-sub">20+ certificates — Web, Graphic Design, Marketing, Networking 25+ certificates — Web, Graphic, AI, Cyber Security, Marketing & more. more.</p>
+      </div>
+
+      <!-- DigiSkills -->
+      <div class="plt-title" style="margin-top:0">
+        <div class="plt-ic"><i class="fas fa-graduation-cap"></i></div>
+        <h5>DigiSkills.pk</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-briefcase"></i></div><div class="ct-info"><h6>Freelancing</h6><span class="bdg bb">Business</span></div><a onclick="openCert('assets/Certifications/Freelancing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-palette"></i></div><div class="ct-info"><h6>Graphic Designing</h6><span class="bdg bg">Graphic</span></div><a onclick="openCert('assets/Certifications/Graphic_Designing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-video"></i></div><div class="ct-info"><h6>Video Editing, Animation & Vlogging</h6><span class="bdg bg">Creative</span></div><a onclick="openCert('assets/Certifications/Video_Editing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-bullhorn"></i></div><div class="ct-info"><h6>Affiliate Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Affiliate_Marketing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-magnifying-glass-chart"></i></div><div class="ct-info"><h6>SEO (Search Engine Optimization)</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/SEO.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-share-nodes"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Digital_marketing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-wordpress"></i></div><div class="ct-info"><h6>WordPress</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/Wordpress_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+      <!-- Cisco -->
+      <div class="plt-title">
+        <div class="plt-ic"><i class="fas fa-network-wired"></i></div>
+        <h5>Cisco Networking Academy</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-computer"></i></div><div class="ct-info"><h6>Computer Hardware Basics</h6><span class="bdg bn">Networking</span></div><a onclick="openCert('assets/Certifications/ComputerHardwareBasicsUpdate20250124-28-im2xxs.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Introduction to Cybersecurity</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/cyber_security_net.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-js-square"></i></div><div class="ct-info"><h6>JavaScript Essentials 1</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/JavaScriptEssentials1Update20250119-26-cdzeqo.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+      <!-- HP LIFE -->
+      <div class="plt-title">
+        <div class="plt-ic"><i class="fas fa-laptop"></i></div>
+        <h5>HP LIFE Foundation</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Intro to Cybersecurity Awareness</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/hp_intro_cyber_security.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-users"></i></div><div class="ct-info"><h6>Your Target Audience</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Your_target_audience_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+      <!-- Coursera -->
+      <div class="plt-title">
+        <div class="plt-ic"><i class="fas fa-book-open"></i></div>
+        <h5>Coursera (Meta)</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-code"></i></div><div class="ct-info"><h6>Introduction to Front-End Development</h6><span class="bdg bw">Web</span></div></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-html5"></i></div><div class="ct-info"><h6>HTML & CSS in Depth</h6><span class="bdg bw">Web</span></div><a onclick="openLB('assets/Certifications/html_css.jpg','Certificate')" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+      <!-- Government -->
+      <div class="plt-title">
+        <div class="plt-ic"><i class="fas fa-landmark"></i></div>
+        <h5>Government of Pakistan — NAVTTC / SBTE</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-desktop"></i></div><div class="ct-info"><h6>Computer Operator — NVL 2</h6><span class="bdg bx">SBTE</span></div><a onclick="openCert('assets/Certifications/Computer_Operator_certificate.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-store"></i></div><div class="ct-info"><h6>E-Commerce — NVL 4 (IT)</h6><span class="bdg bb">SBTE</span></div><a onclick="openCert('assets/Certifications/E-Commerce_Certificate.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-print"></i></div><div class="ct-info"><h6>Computer Graphics Print — NVL 3</h6><span class="bdg bg">SBTE</span></div><a onclick="openCert('assets/Certifications/Graphic_designing_print.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+      <!-- SOS + Others -->
+      <div class="plt-title">
+        <div class="plt-ic"><i class="fas fa-award"></i></div>
+        <h5>SOS TTI & Others</h5>
+      </div>
+      <div class="row g-2">
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-globe"></i></div><div class="ct-info"><h6>Web Designing & Engineering — A+</h6><span class="bdg bw">PM Youth Skills Dev · NAVTTC</span></div><a onclick="openCert('assets/Certifications/Web_Designing___web_development_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-chart-line"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Skill Dev Council</span></div><a onclick="openCert('assets/Certifications/Digital_Marketing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center">
+        <span class="sec-label">Get In Touch</span>
+        <h2 class="sec-title">Contact Me</h2>
+        <p class="sec-sub">Have a project in mind? Let's talk!</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-5">
+          <div class="ci"><div class="ic"><i class="fas fa-envelope"></i></div><div><h6>Email</h6><p>contacttosumaira786@gmail.com</p></div></div>
+          <div class="ci"><div class="ic"><i class="fas fa-location-dot"></i></div><div><h6>Location</h6><p>Karachi, Pakistan</p></div></div>
+        </div>
+        <div class="col-md-7">
+          <form id="contactForm" action="https://formspree.io/f/xjgvyodb" method="POST">
+            <div class="row g-3">
+              <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Your Name" required></div>
+              <div class="col-md-6"><input type="email" name="email" class="form-control" placeholder="Email Address" required></div>
+              <div class="col-12"><input type="text" name="subject" class="form-control" placeholder="Subject" required></div>
+              <div class="col-12"><textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea></div>
+              <div class="col-12">
+                <button type="submit" class="btn-p"><i class="fas fa-paper-plane"></i>Send Message</button>
+                <p id="form-msg" style="display:none;margin-top:10px;color:#28c840;font-size:.85rem;font-weight:600;"><i class="fas fa-check-circle"></i> Message sent! I'll get back to you soon.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 <span>Sumaira</span> Portfolio · <span>contacttosumaira786@gmail.com</span> · Karachi, Pakistan</footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+// Hero typed animation
+new Typed(".typed", {
+  strings: ["Web Designer.", "Web Developer.", "UI/UX Designer.", "Graphic Designer.", "Freelancer."],
+  typeSpeed: 80, backSpeed: 40, loop: true
+});
+
+// POPUP - open image
+function openLB(src, title) {
+  document.getElementById('popup-title').textContent = title || '';
+  document.getElementById('popup-img').src = src;
+  document.getElementById('popup-img').style.display = 'block';
+  document.getElementById('popup-vid').style.display = 'none';
+  document.getElementById('popup-vid').pause();
+  document.getElementById('popup-vid').src = '';
+  document.getElementById('popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// POPUP - open video
+function openVid(src, title) {
+  document.getElementById('popup-title').textContent = title || '';
+  document.getElementById('popup-vid').src = src;
+  document.getElementById('popup-vid').style.display = 'block';
+  document.getElementById('popup-img').style.display = 'none';
+  document.getElementById('popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// POPUP - close
+function closePopup() {
+  document.getElementById('popup').classList.remove('open');
+  document.getElementById('popup-vid').pause();
+  document.getElementById('popup-vid').src = '';
+  document.getElementById('popup-img').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+
+// OPEN CERTIFICATE IN POPUP
+function openCert(src, el) {
+  var title = '';
+  if(el) { var h = el.closest('.ct-card'); if(h) title = h.querySelector('h6').textContent; }
+  document.getElementById('popup-title').textContent = title;
+  document.getElementById('popup-img').style.display = 'none';
+  document.getElementById('popup-vid').style.display = 'none';
+  var old = document.getElementById('popup-pdf');
+  if(old) old.remove();
+  if(src.match(/\.(jpg|jpeg|png)$/i)){
+    document.getElementById('popup-img').src = src;
+    document.getElementById('popup-img').style.display = 'block';
+  } else {
+    var iframe = document.createElement('iframe');
+    iframe.id = 'popup-pdf';
+    iframe.className = 'popup-embed';
+    iframe.src = src;
+    document.querySelector('.popup-box').appendChild(iframe);
+  }
+  document.getElementById('popup').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// SPARKLE TRAIL CURSOR
+var cursorMain = document.getElementById('cursorMain');
+var mx = 0, my = 0;
+var sparkColors = ['#ff014f','#ff6b9d','#ffb3c6','#7c00ff','#b366ff','#fff'];
+var lastSparkle = 0;
+
+document.addEventListener('mousemove', function(e){
+  mx = e.clientX; my = e.clientY;
+  cursorMain.style.left = mx + 'px';
+  cursorMain.style.top  = my + 'px';
+
+  // create sparkle every 30ms
+  var now = Date.now();
+  if(now - lastSparkle > 30){
+    lastSparkle = now;
+    var sp = document.createElement('div');
+    sp.className = 'sparkle';
+    var size = Math.random() * 8 + 4;
+    var offsetX = (Math.random() - 0.5) * 16;
+    var offsetY = (Math.random() - 0.5) * 16;
+    sp.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(mx+offsetX)+'px;top:'+(my+offsetY)+'px;background:'+sparkColors[Math.floor(Math.random()*sparkColors.length)]+';box-shadow:0 0 '+size+'px currentColor;';
+    document.body.appendChild(sp);
+    setTimeout(function(){ sp.remove(); }, 600);
+  }
+});
+
+document.querySelectorAll('a, button, [onclick], .pf-thumb, .ct-card, .svc-card, .sk-card, .tl').forEach(function(el){
+  el.addEventListener('mouseenter', function(){ cursorMain.classList.add('hover'); });
+  el.addEventListener('mouseleave', function(){ cursorMain.classList.remove('hover'); });
+});
+
+// SEEK THUMBNAIL VIDEOS TO FIRST FRAME
+document.querySelectorAll('.browser-mock video').forEach(function(v){
+  v.addEventListener('loadedmetadata', function(){ v.currentTime = 0.1; });
+});
+window.addEventListener('scroll', function(){
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+});
+
+// CONTACT FORM - FORMSPREE
+var cForm = document.getElementById('contactForm');
+if(cForm){
+  cForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = cForm.querySelector('button[type="submit"]');
+    var msg = document.getElementById('form-msg');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btn.disabled = true;
+    fetch('https://formspree.io/f/xjgvyodb', {
+      method: 'POST',
+      body: new FormData(cForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r){
+      if(r.ok){
+        cForm.reset();
+        btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+        msg.style.display = 'block';
+        setTimeout(function(){
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
+          btn.disabled = false;
+          msg.style.display = 'none';
+        }, 4000);
+      } else {
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
+        btn.disabled = false;
+      }
+    }).catch(function(){
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
+      btn.disabled = false;
+    });
+  });
+}
+
+// SECTION FADE IN
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('section').forEach(function(s){ s.classList.add('fade-in'); observer.observe(s); });
+
+// HERO PARTICLE CANVAS
+(function(){
+  var canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var mouse = {x: -999, y: -999};
+  var particles = [];
+  var W, H;
+
+  function resize(){
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  document.getElementById('home').addEventListener('mousemove', function(e){
+    var r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  document.getElementById('home').addEventListener('mouseleave', function(){
+    mouse.x = -999; mouse.y = -999;
+  });
+
+  var colors = ['#ff014f','#ff6b9d','#7c00ff','#ff3366','#b366ff'];
+
+  function Particle(){
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 2.5 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.6;
+    this.speedY = (Math.random() - 0.5) * 0.6;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.alpha = Math.random() * 0.5 + 0.1;
+  }
+
+  Particle.prototype.update = function(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x < 0 || this.x > W) this.speedX *= -1;
+    if(this.y < 0 || this.y > H) this.speedY *= -1;
+    // mouse repel
+    var dx = this.x - mouse.x;
+    var dy = this.y - mouse.y;
+    var dist = Math.sqrt(dx*dx + dy*dy);
+    if(dist < 100){
+      this.x += dx / dist * 2;
+      this.y += dy / dist * 2;
+    }
+  };
+
+  Particle.prototype.draw = function(){
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.globalAlpha = this.alpha;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  };
+
+  // create particles
+  var count = Math.floor(W * H / 8000);
+  count = Math.min(Math.max(count, 60), 150);
+  for(var i = 0; i < count; i++) particles.push(new Particle());
+
+  function connect(){
+    for(var a = 0; a < particles.length; a++){
+      for(var b = a+1; b < particles.length; b++){
+        var dx = particles[a].x - particles[b].x;
+        var dy = particles[a].y - particles[b].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 120){
+          ctx.beginPath();
+          ctx.strokeStyle = '#ff014f';
+          ctx.globalAlpha = (1 - dist/120) * 0.12;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+          ctx.globalAlpha = 1;
+        }
+      }
+    }
+  }
+
+  function animate(){
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(function(p){ p.update(); p.draw(); });
+    connect();
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+window.addEventListener("scroll", function() {
+  var scrollY = window.scrollY;
+  document.querySelectorAll("section").forEach(function(sec) {
+    if (scrollY >= sec.offsetTop - 160 && scrollY < sec.offsetTop + sec.offsetHeight - 160) {
+      document.querySelectorAll(".nav-link").forEach(function(l) { l.classList.remove("active"); });
+      var link = document.querySelector('.nav-link[href="#' + sec.id + '"]');
+      if (link) link.classList.add("active");
+    }
+  });
+});
+
+// Portfolio filter
+function pf(c, btn) {
+  document.querySelectorAll(".pf-btn").forEach(function(b) { b.classList.remove("active"); });
+  btn.classList.add("active");
+  document.querySelectorAll(".pw").forEach(function(i) {
+    i.style.display = i.dataset.c === c ? "" : "none";
+  });
+}
+
+// button
+// ELEMENTS
+// OPEN POPUP
+// OPEN POPUP
+function openLB(src){
+  const popup = document.getElementById("popup");
+  const img = document.getElementById("popup-img");
+
+  popup.classList.add("open");
+  img.src = src;
+
+  // reset zoom every time open
+  img.style.transform = "scale(1)";
+}
+
+// CLOSE POPUP
+function closePopup(){
+  document.getElementById("popup").classList.remove("open");
+}
+
+// MOUSE WHEEL ZOOM
+window.addEventListener("load", function(){
+
+  const img = document.getElementById("popup-img");
+
+  let scale = 1;
+
+  img.addEventListener("wheel", function(e){
+    e.preventDefault();
+
+    if(e.deltaY < 0){
+      // zoom in
+      scale += 0.1;
+    } else {
+      // zoom out
+      scale -= 0.1;
+    }
+
+    // limit zoom
+    if(scale < 1) scale = 1;
+    if(scale > 3) scale = 3;
+
+    img.style.transform = `scale(${scale})`;
+  });
+
+});
+
+// sidebar
+const toggleBtn = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
+
+// TOGGLE SIDEBAR
+toggleBtn.onclick = () => {
+  sidebar.classList.toggle("active");
+};
+
+// CLICK OUTSIDE = CLOSE SIDEBAR
+document.addEventListener("click", function(e){
+  if(
+    sidebar.classList.contains("active") &&
+    !sidebar.contains(e.target) &&
+    !toggleBtn.contains(e.target)
+  ){
+    sidebar.classList.remove("active");
+  }
+});
+
+// NAV LINK CLICK = AUTO CLOSE (MOBILE)
+document.querySelectorAll(".sidebar a").forEach(link => {
+  link.onclick = () => {
+    sidebar.classList.remove("active");
+  };
+});
+</script>
+</body>
+</html>
+  
