@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sumaira - Web Designer & Developer Portfolio. UI/UX, Graphic Design, and Modern Websites.">
 <title>Sumaira Portfolio</title>
 <link rel="icon" type="image/png" href="assets/img/pic.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -164,16 +165,100 @@ section{padding:70px 0;}
 
 footer{background:#000;padding:18px;text-align:center;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);}
 footer span{color:var(--pink);}
+ /* POPUP LIGHTBOX */
+#popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:99999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 
-/* POPUP LIGHTBOX */
-#popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:99999;align-items:center;justify-content:center;padding:20px;}
-#popup.open{display:flex;}
-.popup-close{position:fixed;top:18px;right:22px;background:var(--pink);border:none;color:#fff;width:42px;height:42px;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:100000;box-shadow:0 4px 15px rgba(255,1,79,.5);transition:transform .2s;display:flex;align-items:center;justify-content:center;}
-.popup-close:hover{transform:scale(1.12);}
-.popup-box{position:relative;max-width:90vw;max-height:90vh;text-align:center;}
-.popup-title{color:#fff;font-size:.9rem;font-weight:700;margin-bottom:12px;}
-.popup-box img{max-width:88vw;max-height:82vh;border-radius:12px;object-fit:contain;display:block;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.8);}
-.popup-box video{max-width:88vw;max-height:82vh;border-radius:12px;display:block;box-shadow:0 20px 60px rgba(0,0,0,.8);}
+#popup.open{
+  display:flex;
+}
+
+/* CLOSE BUTTON */
+.popup-close{
+  position:fixed;
+  top:18px;
+  right:22px;
+  background:var(--pink);
+  border:none;
+  color:#fff;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:1.3rem;
+  cursor:pointer;
+  z-index:100000;
+  box-shadow:0 4px 15px rgba(255,1,79,.5);
+  transition:transform .2s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.popup-close:hover{
+  transform:scale(1.12);
+}
+
+/* BOX */
+.popup-box{
+  position:relative;
+  max-width:90vw;
+  max-height:90vh;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+
+/* TITLE */
+.popup-title{
+  color:#fff;
+  font-size:.9rem;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+/* IMAGE */
+.popup-box img{
+  max-width:88vw;
+  max-height:80vh;
+  border-radius:12px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
+}
+
+/* VIDEO FIX (IMPORTANT) */
+#popup-vid{
+  max-width:88vw;
+  max-height:80vh;
+  width:100%;
+  border-radius:12px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+  background:black;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
+}
+
+/* PDF */
+.popup-embed{
+  width:88vw;
+  height:80vh;
+  border:none;
+  border-radius:12px;
+  background:#fff;
+}
 
 
 /* extra */
@@ -249,6 +334,18 @@ footer span{color:var(--pink);}
   padding:8px 12px;
   border-radius:6px;
 }
+/* hover */
+/* ACTIVE MENU */
+.nav-link{
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.nav-link.active{
+  background: #ff014f;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(255,0,79,0.4);
+}
 
 /* =========================
    MOBILE
@@ -258,12 +355,10 @@ footer span{color:var(--pink);}
   #menuToggle{
     display:block;
   }
-
   .sidebar{
     left:-220px;
     transition:0.3s;
   }
-
   .sidebar.active{
     left:0;
   }
@@ -274,7 +369,13 @@ footer span{color:var(--pink);}
   }
 
   .browser-mock{
-    height:250px;
+    height:auto !important;
+  }
+
+  .browser-mock img{
+    height:auto !important;
+    width:100%;
+    object-fit:contain;
   }
 }
 .hero {
@@ -301,21 +402,16 @@ footer span{color:var(--pink);}
     display: block; /* only mobile */
   }
 }
-
-
 @media (max-width: 768px) {
-
   /* SIDEBAR HIDE */
   .sidebar {
     position: fixed;
     left: -220px;
     transition: 0.3s;
   }
-
   .sidebar.active {
     left: 0;
   }
-
   /* MAIN FULL WIDTH */
   .main {
     margin-left: 0;
@@ -326,24 +422,27 @@ footer span{color:var(--pink);}
   .browser-mock {
     height: 250px;
   }
-
   .pf-thumb img {
     height: 220px;
   }
 }
+@media(max-width:768px){
+
+  .popup-box{
+    max-width:100vw;
+    max-height:100vh;
+  }
+
+  #popup-vid{
+    width:100vw;
+    /* height:100vh; */
+    object-fit:cover;
+  }
+
+}
 </style>
 </head>
 <body>
-  <!-- extra -->
-<div id="popup" onclick="if(event.target===this) closePopup()">
-  <button class="popup-close" onclick="closePopup()">×</button>
-
-  <div class="popup-box">
-    <img id="popup-img" src="">
-  </div>
-</div>
- <!-- extra end-->
-
 <!-- CURSOR -->
 <div class="cursor-main" id="cursorMain"></div>
 <!-- SCROLL TOP -->
@@ -506,30 +605,31 @@ footer span{color:var(--pink);}
       <div class="row g-3" id="pgrid">
 
         <!-- GRAPHIC - ALL MOCKUP IMAGES -->
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg','A5 Flyer Mockup')"><img src="assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg" alt="A5 Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A5 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Strawberry.jpg','Manipulation — Photo Manipulation')"><img src="assets/GraphicWork/Strawberry.jpg" alt="Photo Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer.jpg','A6 Flyer Mockup')"><img src="assets/GraphicWork/A6_Flyer.jpg" alt="A6 Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg','A6 Flyer Shadow Overlay')"><img src="assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg" alt="A6 Shadow"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer — Shadow Overlay</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Asp_net.jpg','ASP.NET Flyer Mockup')"><img src="assets/GraphicWork/Asp_net.jpg" alt="ASP.NET"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>ASP.NET Flyer Mockup</h5><span class="bdg bw">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Brand-identity.jpg','Brand Identity — SOS TTI')"><img src="assets/GraphicWork/Brand-identity.jpg" alt="Brand Identity"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Brand Identity — SOS TTI</h5><span class="bdg bg">Branding</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Calender.jpg','Calendar 2025 Mockup')"><img src="assets/GraphicWork/Calender.jpg" alt="Calendar"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Calendar 2025 Mockup</h5><span class="bdg bg">Graphic Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/DigitalFlyer.jpg','Digital Marketing Flyer')"><img src="assets/GraphicWork/DigitalFlyer.jpg" alt="Digital Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Digital Marketing Flyer</h5><span class="bdg bm">Marketing</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/English.jpg','English Language Flyer')"><img src="assets/GraphicWork/English.jpg" alt="English"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>English Language Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/fLYER_MOCKUP.jpg','Flyer Mockup')"><img src="assets/GraphicWork/fLYER_MOCKUP.jpg" alt="Flyer Mockup"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_1.jpg','Flyer Mockup 1')"><img src="assets/GraphicWork/Flyer_Mockup_1.jpg" alt="Flyer 1"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 1</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/SocialmediaPost.jpg','Social Media Mockup ')"><img src="assets/GraphicWork/SocialmediaPost.jpg" alt="Social Media Post"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Scoial Media Post</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_2.jpg','Flyer Mockup 2')"><img src="assets/GraphicWork/Flyer_Mockup_2.jpg" alt="Flyer 2"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 2</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Flyer_Mockup_1.jpg','Free Flyer Mockup')"><img src="assets/GraphicWork/Free_Flyer_Mockup_1.jpg" alt="Free Flyer"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Free Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/bulb.jpg','bulb Mockup')"><img src="assets/GraphicWork/bulb.jpg" alt="Photo Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg','Square Sign Board Mockup')"><img src="assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg" alt="Sign Board"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Sign Board Mockup</h5><span class="bdg bg">Outdoor Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/GlobalLOgo.jpg','Global Solutions Logo')"><img src="assets/GraphicWork/GlobalLOgo.jpg" alt="Global Logo"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Global Solutions Logo</h5><span class="bdg bg">Logo Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/KashmirDay.jpg','Kashmir Solidarity Day Post')"><img src="assets/GraphicWork/KashmirDay.jpg" alt="Kashmir Day"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Kashmir Solidarity Day</h5><span class="bdg bm">Social Media</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/manipulation.jpg','Photo Manipulation')"><img src="assets/GraphicWork/manipulation.jpg" alt="Manipulation"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Graphic Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg','Minimalistic A6 Flyer')"><img src="assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg" alt="Minimalistic"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Minimalistic A6 Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Motorcycle.jpg','Motorcycle Course Flyer')"><img src="assets/GraphicWork/Motorcycle.jpg" alt="Motorcycle"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Motorcycle Course Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg','World Cup Outdoor Sign')"><img src="assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg" alt="Outdoor Sign"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>World Cup Outdoor Sign</h5><span class="bdg bm">Outdoor Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Roller_Banner_Mockup_1.jpg','Roller Banner — Roller_Banner_Mockup_1')"><img src="assets/GraphicWork/Roller_Banner_Mockup_1.jpg" alt="Roller Banner"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Roller Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
-        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Banner_Mockup.jpg','Banner_Mockup — Banner_Mockup')"><img src="assets/GraphicWork/Banner_Mockup.jpg" alt="Roller Banner"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg','A5 Flyer Mockup')"><img src="assets/GraphicWork/A5_Flyer_with_Decorations_Mockup.jpg" alt="A5 Flyer" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A5 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/SocialmediaPost.jpg','Social Media Mockup ')"><img src="assets/GraphicWork/SocialmediaPost.jpg" alt="Social Media Post" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Scoial Media Post</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Strawberry.jpg','Manipulation — Photo Manipulation')"><img src="assets/GraphicWork/Strawberry.jpg" alt="Photo Manipulation" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer.jpg','A6 Flyer Mockup')"><img src="assets/GraphicWork/A6_Flyer.jpg" alt="A6 Flyer"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg','A6 Flyer Shadow Overlay')"><img src="assets/GraphicWork/A6_Flyer_with_Overlay_Shadows.jpg" alt="A6 Shadow" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>A6 Flyer — Shadow Overlay</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Asp_net.jpg','ASP.NET Flyer Mockup')"><img src="assets/GraphicWork/Asp_net.jpg" alt="ASP.NET"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>ASP.NET Flyer Mockup</h5><span class="bdg bw">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Brand-identity.jpg','Brand Identity — SOS TTI')"><img src="assets/GraphicWork/Brand-identity.jpg" alt="Brand Identity" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Brand Identity — SOS TTI</h5><span class="bdg bg">Branding</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/DigitalFlyer.jpg','Digital Marketing Flyer')"><img src="assets/GraphicWork/DigitalFlyer.jpg" alt="Digital Flyer"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Digital Marketing Flyer</h5><span class="bdg bm">Marketing</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/English.jpg','English Language Flyer')"><img src="assets/GraphicWork/English.jpg" alt="English"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>English Language Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Flyer_Mockup_1.jpg','Free Flyer Mockup')"><img src="assets/GraphicWork/Free_Flyer_Mockup_1.jpg" alt="Free Flyer" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Free Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/bulb.jpg','bulb Mockup')"><img src="assets/GraphicWork/bulb.jpg" alt="Photo Manipulation"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/GlobalLOgo.jpg','Global Solutions Logo')"><img src="assets/GraphicWork/GlobalLOgo.jpg" alt="Global Logo"><div class="pf-overlay"><div class="eye-ic" loading="lazy"><i class="fas fa-eye"></i></div><h5>Global Solutions Logo</h5><span class="bdg bg">Logo Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/KashmirDay.jpg','Kashmir Solidarity Day Post')"><img src="assets/GraphicWork/KashmirDay.jpg" alt="Kashmir Day"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Kashmir Solidarity Day</h5><span class="bdg bm">Social Media</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/manipulation.jpg','Photo Manipulation')"><img src="assets/GraphicWork/manipulation.jpg" alt="Manipulation"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Photo Manipulation</h5><span class="bdg bg">Graphic Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg','Minimalistic A6 Flyer')"><img src="assets/GraphicWork/Minimalistic_A6_Flyer_Mockup.jpg" alt="Minimalistic" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Minimalistic A6 Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Motorcycle.jpg','Motorcycle Course Flyer')"><img src="assets/GraphicWork/Motorcycle.jpg" alt="Motorcycle" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Motorcycle Course Flyer</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg','World Cup Outdoor Sign')"><img src="assets/GraphicWork/Outdoor_Sign_Mockup_3.jpg" alt="Outdoor Sign" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>World Cup Outdoor Sign</h5><span class="bdg bm">Outdoor Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Roller_Banner_Mockup_1.jpg','Roller Banner — Roller_Banner_Mockup_1')"><img src="assets/GraphicWork/Roller_Banner_Mockup_1.jpg" alt="Roller Banner" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Roller Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Banner_Mockup.jpg','Banner_Mockup — Banner_Mockup')"><img src="assets/GraphicWork/Banner_Mockup.jpg" alt="Roller Banner" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Banner Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Calender.jpg','Calendar 2025 Mockup')"><img src="assets/GraphicWork/Calender.jpg" alt="Calendar"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Calendar 2025 Mockup</h5><span class="bdg bg">Graphic Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/fLYER_MOCKUP.jpg','Flyer Mockup')"><img src="assets/GraphicWork/fLYER_MOCKUP.jpg" alt="Flyer Mockup"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg','Square Sign Board Mockup')"><img src="assets/GraphicWork/Free_Square_Sign_Mockup_1.jpg" alt="Sign Board" loading="lazy"><div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Sign Board Mockup</h5><span class="bdg bg">Outdoor Design</span></div></div></div>
+        
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_1.jpg','Flyer Mockup 1')"><img src="assets/GraphicWork/Flyer_Mockup_1.jpg" alt="Flyer 1"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 1</h5><span class="bdg bg">Print Design</span></div></div></div>
+        <div class="col-md-6 col-lg-4 pw" data-c="graphic" style="display:none"><div class="pf-thumb" onclick="openLB('assets/GraphicWork/Flyer_Mockup_2.jpg','Flyer Mockup 2')"><img src="assets/GraphicWork/Flyer_Mockup_2.jpg" alt="Flyer 2"><div class="pf-overlay" loading="lazy"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Flyer Mockup 2</h5><span class="bdg bg">Print Design</span></div></div></div>
 
         <!-- WEB - WEBSITE MOCKUPS -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
@@ -544,6 +644,7 @@ footer span{color:var(--pink);}
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Furniture Website — Hommie</h5><span class="bdg bw">Web Design</span></div>
           </div>
         </div>
+        <!-- kingster start -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openLB('assets/Web Work/Landing Page.png','KingsterKids — School Website')">
             <div class="browser-mock">
@@ -551,11 +652,12 @@ footer span{color:var(--pink);}
                 <div class="browser-dots"><span></span><span></span><span></span></div>
                 <div class="browser-url">kingsterkids.edu</div>
               </div>
-              <img src="assets/Web Work/Landing Page.png" alt="KingsterKids">
+              <img src="assets/Web Work/Kingster_thumb.jfif" alt="KingsterKids">
             </div>
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>KingsterKids — School Website</h5><span class="bdg bw">Web Design</span></div>
           </div>
         </div>
+        <!-- kingster end -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openLB('assets/Web Work/Lnading Page.png','Gourmet Catering Website')">
             <div class="browser-mock">
@@ -563,12 +665,12 @@ footer span{color:var(--pink);}
                 <div class="browser-dots"><span></span><span></span><span></span></div>
                 <div class="browser-url">gourmetcatering.com</div>
               </div>
-              <img src="assets/Web Work/Lnading Page.png" alt="Gourmet Catering">
+              <img src="assets/Web Work/Lnading Page.png" alt="Gourmet Catering" loading="lazy">
             </div>
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Gourmet Catering Website</h5><span class="bdg bw">Web Design</span></div>
           </div>
         </div>
-
+<!-- mindset -->
         <div class="col-md-6 col-lg-4 pw" data-c="web">
           <div class="pf-thumb" onclick="openLB('assets/Web Work/mindset.png','Mindset Technology — Client Website')">
             <div class="browser-mock">
@@ -576,24 +678,48 @@ footer span{color:var(--pink);}
                 <div class="browser-dots"><span></span><span></span><span></span></div>
                 <div class="browser-url">mindsettechnology.net</div>
               </div>
-              <img src="assets/Web Work/mindset.png" alt="Mindset Technology">
+              <img src="assets/Web Work/mindset.png" alt="Mindset Technology" loading="lazy">
             </div>
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Mindset Technology — Client Site</h5><span class="bdg bw">WordPress</span></div>
           </div>
         </div>
-
-        <div class="col-md-6 col-lg-4 pw" data-c="web" >
-          <div class="pf-thumb" onclick="openLB('assets/Web Work/Form_validation.JPG','Form Validation')">
+        <!-- CLone-->
+        <div class="col-md-6 col-lg-4 pw" data-c="web">
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/NetflixClone.mp4','Netflix Cone')">
             <div class="browser-mock">
               <div class="browser-bar">
                 <div class="browser-dots"><span></span><span></span><span></span></div>
-                <div class="browser-url">Form Validation</div>
+                <div class="browser-url">Netflix Cone</div>
               </div>
-              <img src="assets/Web Work/Form_validation.JPG" alt="Form Validation">
+              <img src="assets/Web Work/clone.png" alt="Netflix Clone" loading="lazy">
             </div>
-            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Form Validation</h5><span class="bdg bw">Form Validation</span></div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Netflix Cone</h5><span class="bdg bw">WordPress</span></div>
           </div>
         </div>
+         <!-- kingster -->
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openVid('assets/Web Work/Wesbite.mp4','Website Demo')">
+            <div class="browser-mock">
+              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Website Demo</div></div>
+              <video src="assets/Web Work/Wesbite.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Website Demo</h5><span class="bdg bw">Watch Demo</span></div>
+          </div>
+        </div>
+<!-- Digital Clock -->
+        <div class="col-md-6 col-lg-4 pw" data-c="web" >
+          <div class="pf-thumb" onclick="openLB('assets/Web Work/clock.png','Digital Clock')">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <div class="browser-dots"><span></span><span></span><span></span></div>
+                <div class="browser-url">Digital Clock</div>
+              </div>
+              <img src="assets/Web Work/clock.png" alt="Digital Clock" loading="lazy">
+            </div>
+            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-eye"></i></div><h5>Digital Clock</h5><span class="bdg bw">Digital Clock</span></div>
+          </div>
+        </div>
+        <!-- Digital Clock end-->
         <!-- WEB - VIDEO PROJECTS with actual video thumbnails -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openVid('assets/Web Work/Point of sale.mp4','Point of Sale System')">
@@ -604,15 +730,8 @@ footer span{color:var(--pink);}
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Point of Sale System</h5><span class="bdg bw">Watch Demo</span></div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 pw" data-c="web" >
-          <div class="pf-thumb" onclick="openVid('assets/Web Work/Wesbite.mp4','Website Demo')">
-            <div class="browser-mock">
-              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Website Demo</div></div>
-              <video src="assets/Web Work/Wesbite.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
-            </div>
-            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Website Demo</h5><span class="bdg bw">Watch Demo</span></div>
-          </div>
-        </div>
+       
+        <!-- quiz -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openVid('assets/Web Work/QuizApp.mp4','Quiz Application')">
             <div class="browser-mock">
@@ -622,24 +741,54 @@ footer span{color:var(--pink);}
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Quiz Application</h5><span class="bdg bw">Watch Demo</span></div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 pw" data-c="web" >
-          <div class="pf-thumb" onclick="openVid('assets/Web Work/WeatherApp.mp4','Weather App')">
-            <div class="browser-mock">
-              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Weather App</div></div>
-              <video src="assets/Web Work/WeatherApp.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
-            </div>
-            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Weather App</h5><span class="bdg bw">Watch Demo</span></div>
-          </div>
+        <!-- weather app -->
+      <div class="col-md-6 col-lg-4 pw" data-c="web" >
+  <div class="pf-thumb" onclick="openVid('assets/Web Work/Weather_thumb.png','Weather App')">
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <span></span><span></span><span></span>
         </div>
-        <div class="col-md-6 col-lg-4 pw" data-c="web" >
-          <div class="pf-thumb" onclick="openVid('assets/Web Work/Todo.mp4','Todo App')">
-            <div class="browser-mock">
-              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Todo App</div></div>
-              <video src="assets/Web Work/Todo.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
-            </div>
-            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Todo App</h5><span class="bdg bw">Watch Demo</span></div>
-          </div>
+        <div class="browser-url">Weather App</div>
+      </div>
+      <!-- IMAGE THUMBNAIL -->
+      <img src="assets/Web Work/Weather_thumb.png" alt="Weather App" loading="lazy" style="width:100%;height:100%;object-fit:contain;object-position:center;background:#111;">
+    </div>
+    <div class="pf-overlay">
+      <div class="eye-ic">
+        <i class="fas fa-play"></i></div>
+      <h5>Weather App</h5>
+      <span class="bdg bw">Watch Demo</span>
+    </div>
+
+  </div>
+</div>
+<!-- todo end  -->
+       
+        <!-- todo start -->
+  <div class="col-md-6 col-lg-4 pw" data-c="web" >
+  <div class="pf-thumb" onclick="openVid('assets/Web Work/Todo.mp4','Todo App')">
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <span></span><span></span><span></span>
         </div>
+        <div class="browser-url">Todo App</div>
+      </div>
+      <!-- IMAGE THUMBNAIL -->
+      <img src="assets/Web Work/Todo-thumb.png" alt="Todo App" loading="lazy" style="width:100%;flex:1;object-fit:cover;object-position:top;">
+    </div>
+    <div class="pf-overlay">
+      <div class="eye-ic">
+        <i class="fas fa-play"></i></div>
+      <h5>Todo App</h5>
+      <span class="bdg bw">Watch Demo</span>
+    </div>
+
+  </div>
+</div>
+<!-- todo end  -->
+
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openVid('assets/Web Work/Calculator.mp4','Calculator App')">
             <div class="browser-mock">
@@ -658,15 +807,30 @@ footer span{color:var(--pink);}
             <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Stopwatch App</h5><span class="bdg bw">Watch Demo</span></div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 pw" data-c="web" >
-          <div class="pf-thumb" onclick="openVid('assets/Web Work/AgeCalculator.mp4','Age Calculator')">
-            <div class="browser-mock">
-              <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">Age Calculator</div></div>
-              <video src="assets/Web Work/AgeCalculator.mp4" muted preload="metadata" style="width:100%;flex:1;object-fit:cover;object-position:top;pointer-events:none;"></video>
-            </div>
-            <div class="pf-overlay"><div class="eye-ic"><i class="fas fa-play"></i></div><h5>Age Calculator</h5><span class="bdg bw">Watch Demo</span></div>
-          </div>
+        <!-- age -->
+         <div class="col-md-6 col-lg-4 pw" data-c="web" >
+  <div class="pf-thumb" onclick="openVid('assets/Web Work/AgeCalculator.mp4','AgeCalculator')">
+    <div class="browser-mock">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <span></span><span></span><span></span>
         </div>
+        <div class="browser-url">Age Calculator</div>
+      </div>
+      <!-- IMAGE THUMBNAIL -->
+       <img src="assets/Web Work/agethumb.JPG" alt="Age Calculator" loading="lazy"
+style="width:100%; height:auto; max-height:100%; object-fit:contain; object-position:center;">
+    </div>
+    <div class="pf-overlay">
+      <div class="eye-ic">
+        <i class="fas fa-play"></i></div>
+      <h5>Age Calculator</h5>
+      <span class="bdg bw">Watch Demo</span>
+    </div>
+
+  </div>
+</div>
+        <!-- age end -->
         <div class="col-md-6 col-lg-4 pw" data-c="web" >
           <div class="pf-thumb" onclick="openVid('assets/Web Work/Authentiication.mp4','Authentication System')">
             <div class="browser-mock">
@@ -726,7 +890,7 @@ footer span{color:var(--pink);}
     <button class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></button>
     <div class="popup-box">
       <p class="popup-title" id="popup-title"></p>
-      <img id="popup-img" src="" alt="" style="display:none;">
+      <img id="popup-img" src="" alt="" style="display:none;" loading="lazy">
       <video id="popup-vid" src="" controls style="display:none;"></video>
     </div>
   </div>
@@ -814,13 +978,13 @@ footer span{color:var(--pink);}
         <h5>DigiSkills.pk</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-briefcase"></i></div><div class="ct-info"><h6>Freelancing</h6><span class="bdg bb">Business</span></div><a onclick="openCert('assets/Certifications/Freelancing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-palette"></i></div><div class="ct-info"><h6>Graphic Designing</h6><span class="bdg bg">Graphic</span></div><a onclick="openCert('assets/Certifications/Graphic_Designing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-video"></i></div><div class="ct-info"><h6>Video Editing, Animation & Vlogging</h6><span class="bdg bg">Creative</span></div><a onclick="openCert('assets/Certifications/Video_Editing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-bullhorn"></i></div><div class="ct-info"><h6>Affiliate Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Affiliate_Marketing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-magnifying-glass-chart"></i></div><div class="ct-info"><h6>SEO (Search Engine Optimization)</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/SEO.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-share-nodes"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Digital_marketing.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-wordpress"></i></div><div class="ct-info"><h6>WordPress</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/Wordpress_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-briefcase"></i></div><div class="ct-info"><h6>Freelancing</h6><span class="bdg bb">Business</span></div><a onclick="openCert('assets/Certifications/Freelancing_.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-palette"></i></div><div class="ct-info"><h6>Graphic Designing</h6><span class="bdg bg">Graphic</span></div><a onclick="openCert('assets/Certifications/Graphic_Designing.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-video"></i></div><div class="ct-info"><h6>Video Editing, Animation & Vlogging</h6><span class="bdg bg">Creative</span></div><a onclick="openCert('assets/Certifications/Video_Editing_.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-bullhorn"></i></div><div class="ct-info"><h6>Affiliate Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Affiliate_Marketing.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-magnifying-glass-chart"></i></div><div class="ct-info"><h6>SEO (Search Engine Optimization)</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/SEO.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-share-nodes"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Digital_marketing.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-wordpress"></i></div><div class="ct-info"><h6>WordPress</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/Wordpress__00001.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
       <!-- Cisco -->
@@ -829,9 +993,9 @@ footer span{color:var(--pink);}
         <h5>Cisco Networking Academy</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-computer"></i></div><div class="ct-info"><h6>Computer Hardware Basics</h6><span class="bdg bn">Networking</span></div><a onclick="openCert('assets/Certifications/ComputerHardwareBasicsUpdate20250124-28-im2xxs.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Introduction to Cybersecurity</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/cyber_security_net.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-js-square"></i></div><div class="ct-info"><h6>JavaScript Essentials 1</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/JavaScriptEssentials1Update20250119-26-cdzeqo.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-computer"></i></div><div class="ct-info"><h6>Computer Hardware Basics</h6><span class="bdg bn">Networking</span></div><a onclick="openCert('assets/Certifications/ComputerHardwareBasicsUpdate20250124-28-im2xxs.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Introduction to Cybersecurity</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/Certificationshp_intro_cyber_security.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-js-square"></i></div><div class="ct-info"><h6>JavaScript Essentials 1</h6><span class="bdg bw">Web</span></div><a onclick="openCert('assets/Certifications/JavaScriptEssentials1Update20250119-26-cdzeqo.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
       <!-- HP LIFE -->
@@ -840,8 +1004,8 @@ footer span{color:var(--pink);}
         <h5>HP LIFE Foundation</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Intro to Cybersecurity Awareness</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/hp_intro_cyber_security.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-users"></i></div><div class="ct-info"><h6>Your Target Audience</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Your_target_audience_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-shield-halved"></i></div><div class="ct-info"><h6>Intro to Cybersecurity Awareness</h6><span class="bdg bc">Cyber</span></div><a onclick="openCert('assets/Certifications/hp_intro_cyber_security.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-users"></i></div><div class="ct-info"><h6>Your Target Audience</h6><span class="bdg bm">Marketing</span></div><a onclick="openCert('assets/Certifications/Your_target_audience.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
       <!-- Coursera -->
@@ -850,7 +1014,7 @@ footer span{color:var(--pink);}
         <h5>Coursera (Meta)</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fas fa-code"></i></div><div class="ct-info"><h6>Introduction to Front-End Development</h6><span class="bdg bw">Web</span></div></div></div>
+        <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-html5"></i></div><div class="ct-info"><h6>Introduction to Front-End Development</h6><span class="bdg bw">Web</span></div><a onclick="openLB('assets/Certifications/frontEnd.jpg','Certificate')" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
         <div class="col-md-6"><div class="ct-card"><div class="ct-ic"><i class="fab fa-html5"></i></div><div class="ct-info"><h6>HTML & CSS in Depth</h6><span class="bdg bw">Web</span></div><a onclick="openLB('assets/Certifications/html_css.jpg','Certificate')" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
@@ -860,9 +1024,9 @@ footer span{color:var(--pink);}
         <h5>Government of Pakistan — NAVTTC / SBTE</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-desktop"></i></div><div class="ct-info"><h6>Computer Operator — NVL 2</h6><span class="bdg bx">SBTE</span></div><a onclick="openCert('assets/Certifications/Computer_Operator_certificate.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-store"></i></div><div class="ct-info"><h6>E-Commerce — NVL 4 (IT)</h6><span class="bdg bb">SBTE</span></div><a onclick="openCert('assets/Certifications/E-Commerce_Certificate.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-print"></i></div><div class="ct-info"><h6>Computer Graphics Print — NVL 3</h6><span class="bdg bg">SBTE</span></div><a onclick="openCert('assets/Certifications/Graphic_designing_print.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-desktop"></i></div><div class="ct-info"><h6>Computer Operator — NVL 2</h6><span class="bdg bx">SBTE</span></div><a onclick="openCert('assets/Certifications/Computer_Operator_certificate.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-store"></i></div><div class="ct-info"><h6>E-Commerce — NVL 4 (IT)</h6><span class="bdg bb">SBTE</span></div><a onclick="openCert('assets/Certifications/E-Commerce_Certificate.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-print"></i></div><div class="ct-info"><h6>Computer Graphics Print — NVL 3</h6><span class="bdg bg">SBTE</span></div><a onclick="openCert('assets/Certifications/Graphic_designing_print.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
       <!-- SOS + Others -->
@@ -871,8 +1035,8 @@ footer span{color:var(--pink);}
         <h5>SOS TTI & Others</h5>
       </div>
       <div class="row g-2">
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-globe"></i></div><div class="ct-info"><h6>Web Designing & Engineering — A+</h6><span class="bdg bw">PM Youth Skills Dev · NAVTTC</span></div><a onclick="openCert('assets/Certifications/Web_Designing___web_development_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
-        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-chart-line"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Skill Dev Council</span></div><a onclick="openCert('assets/Certifications/Digital_Marketing_.pdf',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-globe"></i></div><div class="ct-info"><h6>Web Designing & Engineering — A+</h6><span class="bdg bw">PM Youth Skills Dev · NAVTTC</span></div><a onclick="openCert('assets/Certifications/Web.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
+        <div class="col-md-4"><div class="ct-card"><div class="ct-ic"><i class="fas fa-chart-line"></i></div><div class="ct-info"><h6>Digital Marketing</h6><span class="bdg bm">Skill Dev Council</span></div><a onclick="openCert('assets/Certifications/Digital_Marketing_.jpg',this)" class="eye-btn" href="javascript:void(0)"><i class="fas fa-eye"></i></a></div></div>
       </div>
 
     </div>
@@ -916,333 +1080,256 @@ footer span{color:var(--pink);}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
-// Hero typed animation
+
+// ================= TYPED =================
 new Typed(".typed", {
   strings: ["Web Designer.", "Web Developer.", "UI/UX Designer.", "Graphic Designer.", "Freelancer."],
-  typeSpeed: 80, backSpeed: 40, loop: true
+  typeSpeed: 80,
+  backSpeed: 40,
+  loop: true
 });
 
-// POPUP - open image
-function openLB(src, title) {
-  document.getElementById('popup-title').textContent = title || '';
-  document.getElementById('popup-img').src = src;
-  document.getElementById('popup-img').style.display = 'block';
-  document.getElementById('popup-vid').style.display = 'none';
-  document.getElementById('popup-vid').pause();
-  document.getElementById('popup-vid').src = '';
-  document.getElementById('popup').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
 
-// POPUP - open video
-function openVid(src, title) {
-  document.getElementById('popup-title').textContent = title || '';
-  document.getElementById('popup-vid').src = src;
-  document.getElementById('popup-vid').style.display = 'block';
-  document.getElementById('popup-img').style.display = 'none';
-  document.getElementById('popup').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+// ================= UNIVERSAL POPUP =================
+function openPopup(src, title = '') {
 
-// POPUP - close
-function closePopup() {
-  document.getElementById('popup').classList.remove('open');
-  document.getElementById('popup-vid').pause();
-  document.getElementById('popup-vid').src = '';
-  document.getElementById('popup-img').src = '';
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+  const popup = document.getElementById('popup');
+  const img = document.getElementById('popup-img');
+  const vid = document.getElementById('popup-vid');
+  const titleEl = document.getElementById('popup-title');
 
-// OPEN CERTIFICATE IN POPUP
-function openCert(src, el) {
-  var title = '';
-  if(el) { var h = el.closest('.ct-card'); if(h) title = h.querySelector('h6').textContent; }
-  document.getElementById('popup-title').textContent = title;
-  document.getElementById('popup-img').style.display = 'none';
-  document.getElementById('popup-vid').style.display = 'none';
-  var old = document.getElementById('popup-pdf');
-  if(old) old.remove();
-  if(src.match(/\.(jpg|jpeg|png)$/i)){
-    document.getElementById('popup-img').src = src;
-    document.getElementById('popup-img').style.display = 'block';
-  } else {
-    var iframe = document.createElement('iframe');
+  if (!popup || !img || !vid || !titleEl) return;
+
+  titleEl.textContent = title;
+
+  // reset
+  img.style.display = 'none';
+  vid.style.display = 'none';
+  vid.pause();
+  vid.src = '';
+
+  // remove old pdf
+  let oldPdf = document.getElementById('popup-pdf');
+  if (oldPdf) oldPdf.remove();
+
+  // image
+  if (src.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+    img.src = src;
+    img.style.display = 'block';
+    img.style.transform = "scale(1)";
+  }
+
+  // video
+  else if (src.match(/\.(mp4|webm|ogg)$/i)) {
+    vid.src = src;
+    vid.style.display = 'block';
+  }
+
+  // pdf / others
+  else {
+    const iframe = document.createElement('iframe');
     iframe.id = 'popup-pdf';
     iframe.className = 'popup-embed';
     iframe.src = src;
     document.querySelector('.popup-box').appendChild(iframe);
   }
-  document.getElementById('popup').classList.add('open');
+
+  popup.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-// SPARKLE TRAIL CURSOR
-var cursorMain = document.getElementById('cursorMain');
-var mx = 0, my = 0;
-var sparkColors = ['#ff014f','#ff6b9d','#ffb3c6','#7c00ff','#b366ff','#fff'];
-var lastSparkle = 0;
 
-document.addEventListener('mousemove', function(e){
-  mx = e.clientX; my = e.clientY;
-  cursorMain.style.left = mx + 'px';
-  cursorMain.style.top  = my + 'px';
+// ================= CLOSE POPUP =================
+function closePopup() {
 
-  // create sparkle every 30ms
-  var now = Date.now();
-  if(now - lastSparkle > 30){
-    lastSparkle = now;
-    var sp = document.createElement('div');
-    sp.className = 'sparkle';
-    var size = Math.random() * 8 + 4;
-    var offsetX = (Math.random() - 0.5) * 16;
-    var offsetY = (Math.random() - 0.5) * 16;
-    sp.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+(mx+offsetX)+'px;top:'+(my+offsetY)+'px;background:'+sparkColors[Math.floor(Math.random()*sparkColors.length)]+';box-shadow:0 0 '+size+'px currentColor;';
-    document.body.appendChild(sp);
-    setTimeout(function(){ sp.remove(); }, 600);
+  const popup = document.getElementById('popup');
+  const img = document.getElementById('popup-img');
+  const vid = document.getElementById('popup-vid');
+
+  if (!popup) return;
+
+  popup.classList.remove('open');
+
+  if (vid) {
+    vid.pause();
+    vid.src = '';
   }
+
+  if (img) img.src = '';
+
+  let oldPdf = document.getElementById('popup-pdf');
+  if (oldPdf) oldPdf.remove();
+
+  document.body.style.overflow = '';
+}
+
+
+// ESC CLOSE
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') closePopup();
 });
 
-document.querySelectorAll('a, button, [onclick], .pf-thumb, .ct-card, .svc-card, .sk-card, .tl').forEach(function(el){
-  el.addEventListener('mouseenter', function(){ cursorMain.classList.add('hover'); });
-  el.addEventListener('mouseleave', function(){ cursorMain.classList.remove('hover'); });
-});
 
-// SEEK THUMBNAIL VIDEOS TO FIRST FRAME
-document.querySelectorAll('.browser-mock video').forEach(function(v){
-  v.addEventListener('loadedmetadata', function(){ v.currentTime = 0.1; });
-});
-window.addEventListener('scroll', function(){
-  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
-});
+// ================= BACKWARD SUPPORT =================
+function openLB(src, title) {
+  openPopup(src, title);
+}
 
-// CONTACT FORM - FORMSPREE
-var cForm = document.getElementById('contactForm');
-if(cForm){
-  cForm.addEventListener('submit', function(e){
+function openVid(src, title) {
+  openPopup(src, title);
+}
+
+function openCert(src, el) {
+  let title = '';
+  if (el) {
+    let card = el.closest('.ct-card');
+    if (card) title = card.querySelector('h6').textContent;
+  }
+  openPopup(src, title);
+}
+
+
+// ================= ZOOM IMAGE =================
+window.addEventListener("load", function () {
+
+  const img = document.getElementById("popup-img");
+  if (!img) return;
+
+  let scale = 1;
+
+  img.onwheel = function (e) {
     e.preventDefault();
-    var btn = cForm.querySelector('button[type="submit"]');
-    var msg = document.getElementById('form-msg');
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-    fetch('https://formspree.io/f/xjgvyodb', {
-      method: 'POST',
-      body: new FormData(cForm),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(r){
-      if(r.ok){
-        cForm.reset();
-        btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
-        msg.style.display = 'block';
-        setTimeout(function(){
-          btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
-          btn.disabled = false;
-          msg.style.display = 'none';
-        }, 4000);
-      } else {
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
-        btn.disabled = false;
-      }
-    }).catch(function(){
-      btn.innerHTML = '<i class="fas fa-paper-plane"></i>Send Message';
-      btn.disabled = false;
-    });
+
+    scale += (e.deltaY < 0 ? 0.1 : -0.1);
+
+    if (scale < 1) scale = 1;
+    if (scale > 3) scale = 3;
+
+    img.style.transform = `scale(${scale})`;
+  };
+});
+
+
+// ================= CURSOR =================
+var cursorMain = document.getElementById('cursorMain');
+
+if (cursorMain) {
+
+  const colors = ['#ff014f','#ff6b9d','#ffb3c6','#7c00ff','#b366ff','#fff'];
+  let last = 0;
+
+  document.addEventListener('mousemove', function (e) {
+
+    cursorMain.style.left = e.clientX + 'px';
+    cursorMain.style.top = e.clientY + 'px';
+
+    let now = Date.now();
+    if (now - last > 120) {
+      last = now;
+
+      let sp = document.createElement('div');
+      sp.className = 'sparkle';
+
+      let size = Math.random() * 5 + 2;
+
+      sp.style.cssText = `
+        width:${size}px;
+        height:${size}px;
+        left:${e.clientX}px;
+        top:${e.clientY}px;
+        background:${colors[Math.floor(Math.random() * colors.length)]};
+        box-shadow:0 0 ${size}px currentColor;
+      `;
+
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 600);
+    }
   });
 }
 
-// SECTION FADE IN
-var observer = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.1});
-document.querySelectorAll('section').forEach(function(s){ s.classList.add('fade-in'); observer.observe(s); });
 
-// HERO PARTICLE CANVAS
-(function(){
-  var canvas = document.getElementById('hero-canvas');
-  if(!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var mouse = {x: -999, y: -999};
-  var particles = [];
-  var W, H;
-
-  function resize(){
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  document.getElementById('home').addEventListener('mousemove', function(e){
-    var r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
-  });
-  document.getElementById('home').addEventListener('mouseleave', function(){
-    mouse.x = -999; mouse.y = -999;
-  });
-
-  var colors = ['#ff014f','#ff6b9d','#7c00ff','#ff3366','#b366ff'];
-
-  function Particle(){
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.size = Math.random() * 2.5 + 1;
-    this.speedX = (Math.random() - 0.5) * 0.6;
-    this.speedY = (Math.random() - 0.5) * 0.6;
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.alpha = Math.random() * 0.5 + 0.1;
-  }
-
-  Particle.prototype.update = function(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x < 0 || this.x > W) this.speedX *= -1;
-    if(this.y < 0 || this.y > H) this.speedY *= -1;
-    // mouse repel
-    var dx = this.x - mouse.x;
-    var dy = this.y - mouse.y;
-    var dist = Math.sqrt(dx*dx + dy*dy);
-    if(dist < 100){
-      this.x += dx / dist * 2;
-      this.y += dy / dist * 2;
-    }
-  };
-
-  Particle.prototype.draw = function(){
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.globalAlpha = this.alpha;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  };
-
-  // create particles
-  var count = Math.floor(W * H / 8000);
-  count = Math.min(Math.max(count, 60), 150);
-  for(var i = 0; i < count; i++) particles.push(new Particle());
-
-  function connect(){
-    for(var a = 0; a < particles.length; a++){
-      for(var b = a+1; b < particles.length; b++){
-        var dx = particles[a].x - particles[b].x;
-        var dy = particles[a].y - particles[b].y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 120){
-          ctx.beginPath();
-          ctx.strokeStyle = '#ff014f';
-          ctx.globalAlpha = (1 - dist/120) * 0.12;
-          ctx.lineWidth = 0.8;
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-          ctx.globalAlpha = 1;
-        }
-      }
-    }
-  }
-
-  function animate(){
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(function(p){ p.update(); p.draw(); });
-    connect();
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
-window.addEventListener("scroll", function() {
-  var scrollY = window.scrollY;
-  document.querySelectorAll("section").forEach(function(sec) {
-    if (scrollY >= sec.offsetTop - 160 && scrollY < sec.offsetTop + sec.offsetHeight - 160) {
-      document.querySelectorAll(".nav-link").forEach(function(l) { l.classList.remove("active"); });
-      var link = document.querySelector('.nav-link[href="#' + sec.id + '"]');
-      if (link) link.classList.add("active");
-    }
-  });
-});
-
-// Portfolio filter
+// ================= FILTER =================
 function pf(c, btn) {
-  document.querySelectorAll(".pf-btn").forEach(function(b) { b.classList.remove("active"); });
+
+  document.querySelectorAll(".pf-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
-  document.querySelectorAll(".pw").forEach(function(i) {
+
+  document.querySelectorAll(".pw").forEach(i => {
     i.style.display = i.dataset.c === c ? "" : "none";
   });
 }
 
-// button
-// ELEMENTS
-// OPEN POPUP
-// OPEN POPUP
-function openLB(src){
-  const popup = document.getElementById("popup");
-  const img = document.getElementById("popup-img");
 
-  popup.classList.add("open");
-  img.src = src;
+// ================= SIDEBAR =================
+const toggleBtn = document.getElementById("menuToggle");
+const sidebar = document.querySelector(".sidebar");
 
-  // reset zoom every time open
-  img.style.transform = "scale(1)";
+if (toggleBtn && sidebar) {
+
+  toggleBtn.onclick = () => {
+    sidebar.classList.toggle("active");
+  };
+
+  document.addEventListener("click", function (e) {
+    if (sidebar.classList.contains("active") &&
+        !sidebar.contains(e.target) &&
+        !toggleBtn.contains(e.target)) {
+      sidebar.classList.remove("active");
+    }
+  });
+
+  document.querySelectorAll(".sidebar a").forEach(a => {
+    a.onclick = () => sidebar.classList.remove("active");
+  });
 }
 
-// CLOSE POPUP
-function closePopup(){
-  document.getElementById("popup").classList.remove("open");
-}
 
-// MOUSE WHEEL ZOOM
-window.addEventListener("load", function(){
+// ================= VIDEO FIRST FRAME =================
+document.querySelectorAll('.browser-mock video').forEach(v => {
+  v.addEventListener('loadedmetadata', () => v.currentTime = 0.1);
+});
 
-  const img = document.getElementById("popup-img");
 
-  let scale = 1;
+// ================= SCROLL BUTTON =================
+window.addEventListener('scroll', function () {
+  let btn = document.getElementById('scrollTop');
+  if (btn) btn.classList.toggle('show', window.scrollY > 400);
+});
 
-  img.addEventListener("wheel", function(e){
-    e.preventDefault();
 
-    if(e.deltaY < 0){
-      // zoom in
-      scale += 0.1;
-    } else {
-      // zoom out
-      scale -= 0.1;
+console.log("Portfolio JS Loaded 🚀");
+// ================= ACTIVE MENU ON SCROLL =================
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+
+  let current = "";
+
+  sections.forEach(section => {
+
+    const sectionTop = section.offsetTop - 150;
+    const sectionHeight = section.clientHeight;
+
+    if (window.scrollY >= sectionTop) {
+      current = section.getAttribute("id");
     }
 
-    // limit zoom
-    if(scale < 1) scale = 1;
-    if(scale > 3) scale = 3;
+  });
 
-    img.style.transform = `scale(${scale})`;
+  navLinks.forEach(link => {
+
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+
   });
 
 });
 
-// sidebar
-const toggleBtn = document.getElementById("menuToggle");
-const sidebar = document.querySelector(".sidebar");
-
-// TOGGLE SIDEBAR
-toggleBtn.onclick = () => {
-  sidebar.classList.toggle("active");
-};
-
-// CLICK OUTSIDE = CLOSE SIDEBAR
-document.addEventListener("click", function(e){
-  if(
-    sidebar.classList.contains("active") &&
-    !sidebar.contains(e.target) &&
-    !toggleBtn.contains(e.target)
-  ){
-    sidebar.classList.remove("active");
-  }
-});
-
-// NAV LINK CLICK = AUTO CLOSE (MOBILE)
-document.querySelectorAll(".sidebar a").forEach(link => {
-  link.onclick = () => {
-    sidebar.classList.remove("active");
-  };
-});
 </script>
 </body>
 </html>
